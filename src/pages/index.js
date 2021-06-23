@@ -4,21 +4,21 @@ import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+import netlifyIdentity from 'netlify-identity-widget';
 
 // Check if window is defined (so if in the browser or in node.js).
-const isBrowser = typeof window !== "undefined"
-if(isBrowser){
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
+// const isBrowser = typeof window !== "undefined"
+// if(isBrowser){
+  if (netlifyIdentity) {
+    netlifyIdentity.on("init", user => {
       if (!user) {
-        window.netlifyIdentity.on("login", () => {
+        netlifyIdentity.on("login", () => {
           document.location.href = "/admin/";
         });
       }
     });
   }
-}
+// }
 
 const IndexPage = () => (
   <Layout>
