@@ -6,6 +6,9 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
+// Check if window is defined (so if in the browser or in node.js).
+const isBrowser = typeof window !== "undefined"
+if(isBrowser){
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on("init", user => {
       if (!user) {
@@ -15,6 +18,7 @@ import Seo from "../components/seo"
       }
     });
   }
+}
 
 const IndexPage = () => (
   <Layout>
